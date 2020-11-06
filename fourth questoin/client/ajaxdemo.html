@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('#hotels').click(function(){
+                
+                
+                var url = "http://localhost:3000/showHotels"
+
+                $.get(url,function(data,status){
+                    data.forEach(element => {
+                        var str="";
+                        for(const prop in element){
+                            str+=prop+" "+element[prop];
+                        }
+                        $('#display').append(str).append("<br>");
+                        
+                    });
+
+                })
+            })
+            $('#but').click(function(){
+                var name1= $("#CITY").val();
+                var url = "http://localhost:3000/showByCity"
+                $.get(url,{author:name1},function(data,status){
+                    data.forEach(element => {
+                        var str="";
+                        for(const prop in element){
+                            str+=prop+" "+element[prop];
+                        }
+                        $('#display').append(str).append("<br>");
+                        
+                    });
+
+                })
+            })
+        })
+
+    </script>
+</head>
+<body>
+   <input type="button" value="SHOWHOTELS" id="hotels">
+    <h2>author</h2>
+    <input type="text" id="CITY" name="city">
+    <input type="button" id="but" value="SEARCH">
+    <div id="display"></div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var result; function getLocation(position)
+        { 
+            result = document.getElementById("display") 
+            if(navigator.geolocation)
+            { navigator.geolocation.getCurrentPosition(successCall,errorCall); } else{ result.innerHTML = 'your browser does not support geo'; } } 
+            function successCall(position){ 
+                lat = position.coords.latitude; 
+                lon = position.coords.longitude; 
+                result.innerHTML = lat+' '+lon;
+                
+                maplink.href='https://www.openstreetmap.org/#map=18/'+lat+'/'+lon; 
+                maplink.innerText = 'showMap'; 
+            } 
+            function errorCall(){ result.innerHTML = 'Unable to locate your location'; }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="GEO" id="but"  onclick="getLocation()">
+    <div id="display"></div>
+    <a href="" id="maplink"></a>
+</body>
+</html>
