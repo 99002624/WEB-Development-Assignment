@@ -27,7 +27,7 @@
             $('#but').click(function(){
                 var name1= $("#CITY").val();
                 var url = "http://localhost:3000/showByCity"
-                $.get(url,{author:name1},function(data,status){
+                $.get(url,{city:name1},function(data,status){
                     data.forEach(element => {
                         var str="";
                         for(const prop in element){
