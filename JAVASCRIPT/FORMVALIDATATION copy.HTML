@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script >
+        var Password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
+
+function validate(){
+    var Name = document.getElementById("Username").value;
+    var EmailId = document.getElementById("Email").value;
+    var Password1 = document.getElementById("Pass").value;
+    var PhoneNo = document.getElementById("Phone").value;
+    var len = Name.lenght;
+    var len1 = PhoneNo.lenght;
+    if(Name==""){
+        alert("Enter the name"+len);
+    }
+    else if(len<5 && len>15){
+        alert("Name lenght should be between 5 and 15 characters");
+    }
+    else if(!Password1.match(Password)){
+        alert("password does meet req");
+
+    }
+    else if(PhoneNo==""){
+        alert("enter phone number ")
+    }
+    else if(len1==10){
+        alert("enter corret phone number"+" "+len1)
+        var vald = parseInt(PhoneNo);
+    }
+    else if(vald=='NaN'){
+        
+           alert("validateenter the number");
+         
+    }
+    else {
+
+        var f=1;
+                
+                // var url = "http://localhost:3000/showBooks"
+                var url = "http://localhost:3000/showBooks"
+
+                $.get(url,function(data,status){
+                    data.for(Eachelement => {
+                        for(const prop of element){
+                            if(Name==prop){
+                                 f=1;
+                            }
+                        }
+                        // var str="";
+                        // for(const prop in element){
+                        //     str+=prop+" "+element[prop];
+                    });
+                    if(f=1){
+                        alert("name exits")
+                            
+                    }
+                    else{
+                        $('#display').html(Name+" "+PhoneNo);
+                    }
+                });
+
+    }
+    }
+
+        
+    </script>
+</head>
+<body>
+    <form action="FORMVALIDATATION.HTML" name = "myform"> 
+        <h3>USERNAME</h3>
+        <input type="text" id="Username" placeholder="ENTER NAME">
+        <h3>PASSWORD</h3>
+        <input type="password" id="Pass">
+        <h3>EMAIL</h3>
+        <input type="email" required="none" id="Email">
+        <h4>PHONe NO</h4>
+        <input type="text" id="Phone"><br>
+        
+        <input type="button" value="register" onclick="validate()">
+    </form>
+    <div id="display"></div>
+</body>
+</html>

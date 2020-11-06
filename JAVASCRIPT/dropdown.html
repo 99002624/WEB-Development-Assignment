@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var TV1=new Array('UV','samsung');
+        var Mobile = new Array('Samsang','iPhone','Sony');
+        var Laptop = new Array('Lenovo','Sony','Hp');
+        function validate(){
+            var str="";
+            var name1=document.getElementById("item").value;
+            //document.write(name1);
+            if(name1=="mobile"){
+                for(let i=0;i<Mobile.length;i++)
+                str=str+Mobile[i]+" ";
+                document.getElementById("display").innerHTML=str;
+            // document.write("mobile");
+            }
+            if(name1=="tv"){
+                for(let i=0;i<TV1.length;i++)
+                str=str+TV1[i]+" ";
+                document.getElementById("display").innerHTML=str;
+                // document.write("TV");
+            }
+            if(name1=="laptop"){
+                for(let i=0;i<Laptop.length;i++)
+                str=str+Laptop[i]+" ";
+                document.getElementById("display").innerHTML=str;
+            }
+        }
+    </script>
+</head>
+<body>
+    <select id="item" onchange="validate()">
+        <option value="mobile">Mobile</option>
+        <option value="tv">TV</option>
+        <option value="laptop">Laptop</option>
+    </select>
+    <div id="display" style="background-color:blue; color: white;">
+
+    </div>
+</body>
+</html>
